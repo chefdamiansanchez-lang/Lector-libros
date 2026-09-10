@@ -23,9 +23,7 @@
             <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
         </config-file>
-        <icon density="ldpi" src="res/icon.png" />
-    </platform>
-
+ </platform>
     <plugin name="cordova-plugin-tts" spec="^0.2.3" />
     <plugin name="cordova-plugin-background-mode" spec="^0.7.3" />
     <plugin name="cordova-plugin-file" spec="^7.0.0" />
