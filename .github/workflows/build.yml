@@ -1,0 +1,45 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar Cordova
+        run: npm install -g cordova
+
+      - name: Instalar dependencias del proyecto
+        run: npm install
+
+      - name: Agregar plataforma Android
+        run: cordova platform add android
+
+      - name: Compilar APK (debug)
+        run: cordova build android
+
+      - name: Subir APK generado
+        uses: actions/upload-artifact@v4
+        with:
+          name: lector-libros-apk
+          path: platforms/android/app/build/outputs/apk/debug/*.apk
