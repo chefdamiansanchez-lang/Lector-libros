@@ -1,0 +1,17 @@
+{
+  "name": "lector-libros",
+  "version": "1.0.0",
+  "displayName": "Lector de Libros",
+  "description": "App que lee en voz alta libros EPUB, PDF y TXT del celular",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-tts": {},
+      "cordova-plugin-background-mode": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-android-permissions": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}

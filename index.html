@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src * 'self' 'unsafe-inline'; media-src *; img-src * data: content:;">
+<title>Lector de Libros</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+
+  <!-- 1. Bienvenida -->
+  <section id="screen-welcome" class="screen active">
+    <div class="spine"></div>
+    <h1>Lector de Libros</h1>
+    <p>Escuchá tus libros EPUB, PDF y TXT leídos en voz alta, sin publicidad y en segundo plano.</p>
+    <button class="btn" id="btn-ingresar">Ingresar</button>
+  </section>
+
+  <!-- 2. Permiso -->
+  <section id="screen-permission" class="screen">
+    <h2>Acceso a tus archivos</h2>
+    <p>Para armar tu biblioteca necesitamos permiso para leer los libros guardados en tu celular. Solo se usan para mostrarlos y leerlos en voz alta.</p>
+    <button class="btn" id="btn-permiso">Dar acceso</button>
+  </section>
+
+  <!-- 3. Biblioteca -->
+  <section id="screen-library" class="screen">
+    <div class="topbar">
+      <h2>Mi biblioteca</h2>
+      <button class="icon-btn" id="btn-rescan" title="Buscar libros de nuevo">⟳</button>
+    </div>
+    <div id="status-banner"></div>
+    <ul id="book-list"></ul>
+  </section>
+
+  <!-- 4. Lector -->
+  <section id="screen-reader" class="screen">
+    <div class="topbar">
+      <button class="icon-btn" id="btn-back">←</button>
+      <h2 id="reader-title">Título</h2>
+    </div>
+    <div id="reader-text-wrap"><div id="reader-text">Cargando...</div></div>
+    <div class="reader-controls">
+      <div class="reader-progress"><div class="reader-progress-fill" id="progress-fill"></div></div>
+      <div class="reader-buttons">
+        <button class="round-btn secondary" id="btn-retroceder" title="Retroceder">«</button>
+        <button class="round-btn" id="btn-play" title="Reproducir / Pausar">▶</button>
+        <button class="round-btn secondary" id="btn-avanzar" title="Avanzar">»</button>
+      </div>
+      <div class="reader-row">
+        <label>Voz</label>
+        <select id="voice-select">
+          <option value="es-AR">Español (Argentina)</option>
+          <option value="es-ES">Español (España)</option>
+          <option value="es-MX">Español (México)</option>
+          <option value="en-US">Inglés (EE.UU.)</option>
+        </select>
+      </div>
+      <div class="reader-row">
+        <label>Velocidad</label>
+        <input type="range" id="rate-range" min="0.5" max="2" step="0.1" value="1">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
